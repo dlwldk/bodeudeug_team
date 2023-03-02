@@ -148,11 +148,7 @@
     $("#count").text($('.sel').length);
     
     $(".list button:button").click(function () {
-      if (!$(this).hasClass("sel")) {
-        $(this).addClass("sel");
-      } else {
-        $(this).removeClass("sel");
-      }
+      $(this).toggleClass("sel");
       $("#count").text($('.sel').length);
     });
   });
