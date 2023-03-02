@@ -145,6 +145,7 @@
   
   $(document).ready(function(){
     $(".list button:button").addClass("sel");
+    $("#count").text($('.sel').length);
     
     $(".list button:button").click(function () {
       if (!$(this).hasClass("sel")) {
