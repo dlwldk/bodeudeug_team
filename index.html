@@ -107,6 +107,7 @@
 
 <div id="team">
   <h1>팀 원</h1>
+  <span>선택된 팀원 총 :<em id="count"></em></span>
   <div class="list">
     <button type="button">킹민주</button>
     <button type="button">우기</button>
@@ -141,6 +142,8 @@
 <script type="text/javascript">
   
   $(document).ready(function(){
-    alert("?");
+    $(".list button:button").click(function () {
+      $("#count").val($('.sel').length);
+    });
   });
 </script>
