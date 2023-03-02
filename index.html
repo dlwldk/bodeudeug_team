@@ -144,6 +144,8 @@
 <script type="text/javascript">
   
   $(document).ready(function(){
+    $(".list button:button").addClass("sel");
+    
     $(".list button:button").click(function () {
       if (!$(this).hasClass("sel")) {
         $(this).addClass("sel");
