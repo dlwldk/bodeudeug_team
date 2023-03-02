@@ -143,6 +143,11 @@
   
   $(document).ready(function(){
     $(".list button:button").click(function () {
+      if (!$(this).hasClass("sel")) {
+        $(this).addClass("sel");
+      } else {
+        $(this).removeClass("sel");
+      }
       $("#count").val($('.sel').length);
     });
   });
