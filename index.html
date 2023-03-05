@@ -37,16 +37,17 @@
 
 <script type="text/javascript">
  var selArr = new Array();
- var selNum = 0;
+ var selNum = $('.sel').length;
  var teamNum = 0;
   
  $(document).ready(function(){
   $(".list button:button").addClass("sel");
-  $("#count").text($('.sel').length);
+  $("#count").text(selNum);
     
   $(".list button:button").click(function () {
    $(this).toggleClass("sel");
-   $("#count").text($('.sel').length);
+   selNum = $('.sel').length;
+   $("#count").text(selNum);
   });
   
   $("#btnSel").on("click", function() {
