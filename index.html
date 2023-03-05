@@ -54,6 +54,8 @@
    });
   
    $("#btnSel").on("click", function() {
+     //초기화
+     $rslt.empty();
      selArr = [];
      selNum = 0;
    
@@ -83,7 +85,7 @@
        }
      }
      
-     // 리스트 애니메이션
+     //리스트 애니메이션
      $(".rslt").find("li").each(function() {
        count = 0;
        setTimeout(function() {
