@@ -77,15 +77,11 @@
      
      //팀 리스트 생성
      for (var i = 0; i < teamNum; i++) {
-       $(".rslt").append("<li><span class='team-nm'>" + (String.fromCharCode(65 + i)) + "팀</span>: <span class='contact'> </span></li>");      
-     }
-     
-     while(cnt < teamNum) {
-       let tempArray;
-       tempArray = selArr.splice(0, teamShare);
+       let tempArray = selArr.splice(0, teamShare);
        result.push(tempArray);
-       
-       cnt++;
+       let list = "<li><span class='team-nm'>" + (String.fromCharCode(65 + i)) + 
+                  + "팀</span>: <span class='contact'><span class='pl'>" + selArr.splice(0, teamShare).join("</span><span class='pl'>") + "</span></span></li>";
+       $(".rslt").append(list);      
      }
      console.log(result);
 
