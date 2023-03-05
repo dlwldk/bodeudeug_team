@@ -39,10 +39,8 @@
  var selArr = new Array();
  var selNum = 0;
  var teamNum = 0;
- var teamShare = 0;
- var teamRem = 0;
- var result = [];
- var cnt = 0;
+ var memCnt = 0;
+ var count = 0;
   
  $(document).ready(function() {
    $(".list button:button").addClass("sel");
@@ -68,18 +66,13 @@
      })
    
      teamNum = $(".team").val(); //팀 수
-     
-     //console.log("==>원래: " + selArr);
      selArr = arrShk(selArr); //팀원 섞기
-     //console.log("==>: " + selArr);
-     teamShare = Math.floor(selNum / teamNum);
-     teamRem = Math.floor(selNum % teamNum);
+     memCnt = Math.floor(selNum / teamNum); //팀원 수
      
      //팀 리스트 생성
      for (var i = 0; i < teamNum; i++) {
        let list = "<li><span class='team-nm'>" + (String.fromCharCode(65 + i)) + 
-                  "팀</span>: <span class='contact'><span class='pl'>" + selArr.splice(0, teamShare).join("</span><span class='pl'>") + "</span></span></li>";
-       console.log(list);
+                  "팀</span>: <span class='contact'><span class='pl'>" + selArr.splice(0, memCnt).join("</span><span class='pl'>") + "</span></span></li>";
        $(".rslt").append(list);      
      }
      
