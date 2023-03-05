@@ -77,17 +77,44 @@
      
      //팀 리스트 생성
      for (var i = 0; i < teamNum; i++) {
-       //let tempArray = selArr.splice(0, teamShare);
-       //result.push(tempArray);
        let list = "<li><span class='team-nm'>" + (String.fromCharCode(65 + i)) + 
                   "팀</span>: <span class='contact'><span class='pl'>" + selArr.splice(0, teamShare).join("</span><span class='pl'>") + "</span></span></li>";
        console.log(list);
        $(".rslt").append(list);      
      }
-     //console.log(result);
+     
+     //남은 인원 배치
+     if (selArr.length != 0) {
+       for (var i = 0; i < selArr.length; i++) {
+         $(".rslt").find("li").eq(i).find(".contact").append("<span class='pl'>" + selArr[i] + "</span>");
+       }
+     }
+     
+     // 리스트 애니메이션
+     $(".rslt").find("li").each(function() {
+       count = 0;
+       setTimeout(function() {
+         $(".rslt").find("li").eq(count).find(".pl").each(function() {
+           if (!$(this).index()) {
+             $(this).animate({
+               left: 10 * $(this).index(),
+               opacity: 1
+             }, 300);
+           } else {
+             $(this).animate({
+               left: 10 * $(this).index(),
+               opacity: 1
+             }, 300 * $(this).index());
+           }
+           $(this).css({
+             transform: "rotate(0deg)"
+           });
+         });
+         count++;
+      }, 100 * $(this).index());
+    });
 
   });
-  
  });
   
  //배열 섞기
