@@ -64,7 +64,7 @@
     width: 35px;
   }
 
-  #team .btnSel {
+  #team .btn-sel {
     display: block;
     background: none;
     border: 1px solid white;
@@ -74,7 +74,7 @@
     height: 50px;
     margin: 20px auto 0;
     font-family: "맑은 고딕";
-    font-size: 15px;
+    font-size: 25px;
     font-weight: bold;
     color: white;
   }
