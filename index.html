@@ -39,7 +39,7 @@
  var selArr = new Array();
  var selNum = 0;
  var teamNum = 0;
- var startIdx = 0;
+ var result = [];
   
  $(document).ready(function() {
    $(".list button:button").addClass("sel");
@@ -73,23 +73,18 @@
      
      //팀 리스트 생성
      for (var i = 0; i < teamNum; i++) {
-       $(".rslt").append("<li><span class='team-nm'>" + (String.fromCharCode(65 + i)) + "팀</span>: <span class='contact'> </span></li>");
-       var team = selArr[startIdx:startIdx+teamCnt];
-       startIdx = startIdx + teamCnt;
-       console.log(team);
-       
+       $(".rslt").append("<li><span class='team-nm'>" + (String.fromCharCode(65 + i)) + "팀</span>: <span class='contact'> </span></li>");      
      }
      
-     
-     
-     for(var i = 0; i < teamNum; i++) {
-       
+     while(selArr.length > 0 ) {
+       let tempArray;
+       tempArray = arr.splice(0, teamCnt);
+       result.push(tempArray);
        
        
      }
-    
-   
-    
+     console.log(result);
+
   });
   
  });
