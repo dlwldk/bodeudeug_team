@@ -39,6 +39,7 @@
  var selArr = new Array();
  var selNum = 0;
  var teamNum = 0;
+ var startIdx = 0;
   
  $(document).ready(function() {
    $(".list button:button").addClass("sel");
@@ -64,10 +65,28 @@
      })
    
      teamNum = $(".team").val(); //팀 수
-     console.log("==>원래: " + selArr);
-     selArr = arrShk(selArr);
-     console.log("==>: " + selArr);
      
+     //console.log("==>원래: " + selArr);
+     selArr = arrShk(selArr); //팀원 섞기
+     //console.log("==>: " + selArr);
+     teamCnt = Math.floor(selNum / teamNum);
+     
+     //팀 리스트 생성
+     for (var i = 0; i < teamNum; i++) {
+       $(".rslt").append("<li><span class='team-nm'>" + (String.fromCharCode(65 + i)) + "팀</span>: <span class='contact'> </span></li>");
+       var team = selArr[startIdx:startIdx+teamCnt];
+       startIdx = startIdx + teamCnt;
+       console.log(team);
+       
+     }
+     
+     
+     
+     for(var i = 0; i < teamNum; i++) {
+       
+       
+       
+     }
     
    
     
@@ -75,7 +94,7 @@
   
  });
   
- // 배열 섞기 로직
+ //배열 섞기
  function arrShk(arr) {
     for (var i = arr.length - 1; i > 0; i--) {
       var idx = Math.floor(Math.random() * (i + 1));
