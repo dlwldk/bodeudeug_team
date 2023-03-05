@@ -37,33 +37,52 @@
 
 <script type="text/javascript">
  var selArr = new Array();
- var selNum = $('.sel').length;
+ var selNum = 0;
  var teamNum = 0;
   
- $(document).ready(function(){
-  $(".list button:button").addClass("sel");
-  $("#count").text(selNum);
-    
-  $(".list button:button").click(function () {
-   $(this).toggleClass("sel");
+ $(document).ready(function() {
+   $(".list button:button").addClass("sel");
    selNum = $('.sel').length;
    $("#count").text(selNum);
-  });
+    
+   $(".list button:button").click(function () {
+     $(this).toggleClass("sel");
+     selNum = $('.sel').length;
+     $("#count").text(selNum);
+   });
   
-  $("#btnSel").on("click", function() {
-   selArr = [];
-   selNum = 0;
+   $("#btnSel").on("click", function() {
+     selArr = [];
+     selNum = 0;
    
-   // 선택된 버튼의 갯수
-   $(".list button").each(function() {
-      if($(this).hasClass("sel")) {
-        selArr[selNum] = $(this).text();
-        selNum++;
-      }
-   })
+     //선택된 버튼의 갯수
+     $(".list button").each(function() {
+       if($(this).hasClass("sel")) {
+         selArr[selNum] = $(this).text();
+         selNum++;
+       }
+     })
+   
+     teamNum = $(".team").val(); //팀 수
+     console.log("==>원래: " + selArr);
+     selArr = arrShk(selArr);
+     console.log("==>: " + selArr);
+     
+    
+   
+    
   });
-   
-  console.log("===>" + selArr);
   
  });
+  
+ // 배열 섞기 로직
+ function arrShk(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var idx = Math.floor(Math.random() * (i + 1));
+      var mem = arr[i];
+      arr[i] = arr[idx];
+      arr[idx] = mem;
+    }
+    return arr;
+  }
 </script>
