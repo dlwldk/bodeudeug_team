@@ -1,8 +1,5 @@
 <link rel="stylesheet" href="style.css">
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<style>
- 
-</style>
 
 <div id="team">
   <h1>팀 원</h1>
@@ -32,21 +29,39 @@
     <button type="button">쟈쟈</button>
   </div>
   <h1>팀 수</h1>
-  <input type="number" class="team">
-  <button type="button" class="btnSel">팀짜기</button>
+  <input type="number" id="teamNum">
+  <button type="button" style="font-size: 25px;" id="btnSel">팀짜기</button>
   <h1>결과</h1>
   <ul class="rslt"></ul>
 </div>
 
 <script type="text/javascript">
+ var selArr = new Array();
+ var selNum = 0;
+ var teamNum = 0;
   
-  $(document).ready(function(){
-    $(".list button:button").addClass("sel");
-    $("#count").text($('.sel').length);
+ $(document).ready(function(){
+  $(".list button:button").addClass("sel");
+  $("#count").text($('.sel').length);
     
-    $(".list button:button").click(function () {
-      $(this).toggleClass("sel");
-      $("#count").text($('.sel').length);
+  $(".list button:button").click(function () {
+   $(this).toggleClass("sel");
+   $("#count").text($('.sel').length);
+  });
+  
+  $("#btnSel").on("click", function() {
+   selArr = [];
+   selNum = 0;
+   
+   // 선택된 버튼의 갯수
+   $(".list button").each(function() {
+      if($(this).hasClass("sel")) {
+        selArr[selNum] = $(this).text();
+        selNum++;
+      };
     });
+   
+   console.log("===>" + selArr);
+  
   });
 </script>
