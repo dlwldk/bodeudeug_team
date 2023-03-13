@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="style.css">
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <div id="team">
   <h1>팀 원</h1>
@@ -110,6 +110,12 @@
     });
 
   });
+
+  // init 체크
+  if (!Kakao.isInitialized()) {
+    Kakao.init('980864287166a35289ec3df9c04e4089');
+    console.log("???")
+  }
  });
   
  //배열 섞기
