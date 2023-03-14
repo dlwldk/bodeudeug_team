@@ -84,7 +84,7 @@
      memCnt = Math.floor(selNum / teamNum); //팀원 수
 
      window.localStorage.setItem('teamNum', teamNum);
-     window.localStorage.setItem('arr', selArr);
+     window.localStorage.setItem('arr', JSON.stringify(selArr));
      window.localStorage.setItem('memCnt', memCnt);
      
      //팀 리스트 생성

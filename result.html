@@ -17,7 +17,7 @@
     $(document).ready(function() {
         
         teamNum = window.localStorage.getItem('teamNum'); //팀 수
-        selArr = window.localStorage.getItem('arr'); //팀원 섞기
+        selArr = JSON.parse(window.localStorage.getItem('arr')); //팀원 섞기
         memCnt = window.localStorage.getItem('memCnt'); //팀원 수
 
         $("#h1").text(teamNum + ", " + selArr + ", " + memCnt);
