@@ -51,13 +51,9 @@
  var memCnt = 0;
  var count = 0;
 
- const user = window.localStorage.getItem('user');
-
  
  $(document).ready(function() {
-  if(user != null && user != undefined) {
-    $("#test").text(user);
-  }
+  window.localStorage.clear();
    $(".list button:button").addClass("sel");
    selNum = $('.sel').length;
    $("#count").text(selNum);
@@ -87,6 +83,10 @@
      teamNum = $(".team").val(); //팀 수
      selArr = arrShk(selArr); //팀원 섞기
      memCnt = Math.floor(selNum / teamNum); //팀원 수
+
+     window.localStorage.setItem('teamNum', teamNum);
+     window.localStorage.setItem('arr', selArr);
+     window.localStorage.setItem('memCnt', memCnt);
      
      //팀 리스트 생성
      for (var i = 0; i < teamNum; i++) {
