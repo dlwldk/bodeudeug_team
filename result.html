@@ -15,13 +15,12 @@
     const user = window.localStorage.getItem('user');
 
     $(document).ready(function() {
-        if(user != null && user != undefined) {
-            $("#test").text(user);
-        }
         
         teamNum = window.localStorage.getItem('teamNum'); //팀 수
         selArr = window.localStorage.getItem('arr'); //팀원 섞기
         memCnt = window.localStorage.getItem('memCnt'); //팀원 수
+
+        $("#h1").text(teamNum + ", " + selArr + ", " + memCnt);
         
 
         //팀 리스트 생성
