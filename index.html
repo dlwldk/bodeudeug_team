@@ -120,11 +120,11 @@
   });
 
   //init 체크
-  // if (!Kakao.isInitialized()) {
-  //   Kakao.init('980864287166a35289ec3df9c04e4089');
-  //   console.log("카카오 연동 성공");
+  if (!Kakao.isInitialized()) {
+    Kakao.init('980864287166a35289ec3df9c04e4089');
+    console.log("카카오 연동 성공");
     
-  // }
+  }
 
   Kakao.Share.createCustomButton({
     container: '#kakaotalk-sharing-btn',
@@ -134,8 +134,11 @@
       description: '설명 영역입니다.',
     }
   });
- });
   
+  
+ });
+
+
  //배열 섞기
  function arrShk(arr) {
     for (var i = arr.length - 1; i > 0; i--) {
