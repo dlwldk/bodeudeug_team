@@ -35,10 +35,14 @@
   <button type="button" class="btn-sel" id="btnSel">팀짜기</button>
   <h1>결과</h1>
   <ul class="rslt"></ul>
+  <div>
   <a id="kakaotalk-sharing-btn" href="javascript:;">
     <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
       alt="카카오톡 공유 보내기 버튼" />
   </a>
+  </div>
+  <br>
+  <span>결과 공유하기</span>
 </div>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
   integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous">
@@ -62,7 +66,6 @@
  var itemArr = new Array();
  
  $(document).ready(function() {
-  window.localStorage.clear();
    $(".list button:button").addClass("sel");
    selNum = $('.sel').length;
    $("#count").text(selNum);
@@ -74,8 +77,6 @@
    });
   
    $("#btnSel").on("click", function() {
-
-    window.localStorage.setItem("user", "이지아");
      //초기화
      $(".rslt").empty();
      selArr = [];
@@ -92,12 +93,7 @@
      teamNum = $(".team").val(); //팀 수
      selArr = arrShk(selArr); //팀원 섞기
      memCnt = Math.floor(selNum / teamNum); //팀원 수
-
-     window.localStorage.setItem('teamNum', teamNum);
-     window.localStorage.setItem('arr', JSON.stringify(selArr));
-     window.localStorage.setItem('memCnt', memCnt);
-     
-     
+    
      //팀 리스트 생성
      for (var i = 0; i < teamNum; i++) {
        var itemObj = new Object();
@@ -108,10 +104,9 @@
        
        itemObj.item = (String.fromCharCode(65 + i)) + '팀';
        itemObj.itemOp = tmp.join(", ");
-       console.log(itemObj);
        itemArr.push(itemObj);
      }
-     console.log(itemArr);
+
      //남은 인원 배치
      if (selArr.length != 0) {
        for (var i = 0; i < selArr.length; i++) {
