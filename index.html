@@ -50,6 +50,16 @@
  var memCnt = 0;
  var count = 0;
 
+ var today = new Date();
+
+ var year = today.getFullYear();
+ var month = ('0' + (today.getMonth() + 1)).slice(-2);
+ var day = ('0' + today.getDate()).slice(-2);
+ var weekArr = ['일', '월', '화', '수', '목', '금', '토'];
+ var week = weekArr[today.getDay()];
+ var dateString = year + '-' + month  + '-' + day + '(' + week + ')';
+
+ var itemArr = new Array();
  
  $(document).ready(function() {
   window.localStorage.clear();
@@ -87,13 +97,21 @@
      window.localStorage.setItem('arr', JSON.stringify(selArr));
      window.localStorage.setItem('memCnt', memCnt);
      
+     
      //팀 리스트 생성
      for (var i = 0; i < teamNum; i++) {
+       var itemObj = new Object();
+       let tmp = selArr.splice(0, memCnt);
        let list = "<li><span class='team-nm'>" + (String.fromCharCode(65 + i)) + 
-                  "팀</span>: <span class='contact'><span class='pl'>" + selArr.splice(0, memCnt).join("</span><span class='pl'>") + "</span></span></li>";
-       $(".rslt").append(list);      
+                  "팀</span>: <span class='contact'><span class='pl'>" + tmp.join("</span><span class='pl'>") + "</span></span></li>";
+       $(".rslt").append(list);  
+       
+       itemObj.item = (String.fromCharCode(65 + i)) + '팀';
+       itemObj.itemOp = tmp.join(", ");
+       console.log(itemObj);
+       itemArr.push(itemObj);
      }
-     
+     console.log(itemArr);
      //남은 인원 배치
      if (selArr.length != 0) {
        for (var i = 0; i < selArr.length; i++) {
@@ -150,47 +168,26 @@
     title: '오늘의 디저트',
     description: '아메리카노, 빵, 케익',
     imageUrl:
-      '/IMG_2145.jpg',
+      'https://dlwldk.github.io/pngtree-vector-working-team-icon-png-image_705755.jpg',
     link: {
       mobileWebUrl: 'https://dlwldk.github.io',
       webUrl: 'https://dlwldk.github.io',
     },
   },
   itemContent: {
-    profileText: 'Kakao',
-    profileImageUrl: 'https://dlwldk.github.io/IMG_2145.jpg',
+    //profileText: 'Kakao',
+    //profileImageUrl: 'https://dlwldk.github.io/IMG_2145.jpg',
     titleImageUrl: 'https://dlwldk.github.io/IMG_2145.jpg',
-    titleImageText: 'Cheese cake',
-    titleImageCategory: 'Cake',
-    items: [
-      {
-        item: 'Cake1',
-        itemOp: '1000원',
-      },
-      {
-        item: 'Cake2',
-        itemOp: '2000원',
-      },
-      {
-        item: 'Cake3',
-        itemOp: '3000원',
-      },
-      {
-        item: 'Cake4',
-        itemOp: '4000원',
-      },
-      {
-        item: 'Cake5',
-        itemOp: '5000원',
-      },
-    ],
-    sum: 'Total',
-    sumOp: '15000원',
+    titleImageText: dateString + '의 팀입니다!',
+    titleImageCategory: '보드득',
+    items: itemArr,
+    sum: '총',
+    sumOp: memCnt + '명',
   },
   social: {
-    likeCount: 10,
-    commentCount: 20,
-    sharedCount: 30,
+    likeCount: 100000,
+    commentCount: 22,
+    sharedCount: 9999,
   },
   buttons: [
     {
