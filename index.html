@@ -64,8 +64,6 @@
  var weekArr = ['일', '월', '화', '수', '목', '금', '토'];
  var week = weekArr[today.getDay()];
  var dateString = year + '-' + month  + '-' + day + '(' + week + ')';
-
- var itemArr = new Array();
  
  $(document).ready(function() {
    $(".list button:button").addClass("sel");
@@ -85,6 +83,7 @@
      $(".rslt").empty();
      selArr = [];
      selNum = 0;
+     var itemArr = new Array();
    
      //선택된 버튼의 갯수
      $(".list button").each(function() {
@@ -110,14 +109,15 @@
        itemObj.itemOp = tmp.join(", ");
        itemArr.push(itemObj);
      }
-
+     
      //남은 인원 배치
      if (selArr.length != 0) {
        for (var i = 0; i < selArr.length; i++) {
          $(".rslt").find("li").eq(i).find(".contact").append("<span class='pl'>" + selArr[i] + "</span>");
+         itemArr[i].itemOp = itemArr[i].itemOp + ", " + selArr[i];
        }
      }
-     
+
      //리스트 애니메이션
      $(".rslt").find("li").each(function() {
        count = 0;
@@ -141,7 +141,7 @@
          count++;
       }, 100 * $(this).index());
     });
-    console.log("selNum:" + selNum);
+    
     //init 체크
     if (!Kakao.isInitialized()) {
       Kakao.init('980864287166a35289ec3df9c04e4089');
