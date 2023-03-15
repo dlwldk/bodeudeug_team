@@ -35,15 +35,17 @@
   <button type="button" class="btn-sel" id="btnSel">팀짜기</button>
   <h1>결과</h1>
   <ul class="rslt"></ul>
+  <div style="display:none;" id="shareZone">
   <div>
-  <a id="kakaotalk-sharing-btn" href="javascript:;">
+  <a id="kakaotalk-sharing-btn" href="javascript:void(0);">
     <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
       alt="카카오톡 공유 보내기 버튼" />
   </a>
   </div>
   <br>
   <span>결과 공유하기</span>
-</div>
+  </div>
+  </div>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
   integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous">
 </script>
@@ -77,6 +79,8 @@
    });
   
    $("#btnSel").on("click", function() {
+
+     $("#shareZone").show();
      //초기화
      $(".rslt").empty();
      selArr = [];
@@ -113,7 +117,7 @@
          $(".rslt").find("li").eq(i).find(".contact").append("<span class='pl'>" + selArr[i] + "</span>");
        }
      }
-     console.log("selNum:" + selNum);
+     
      //리스트 애니메이션
      $(".rslt").find("li").each(function() {
        count = 0;
@@ -137,15 +141,55 @@
          count++;
       }, 100 * $(this).index());
     });
+    console.log("selNum:" + selNum);
+    //init 체크
+    if (!Kakao.isInitialized()) {
+      Kakao.init('980864287166a35289ec3df9c04e4089');
+      console.log("카카오 연동 성공");
+    
+    }
 
+    Kakao.Share.createDefaultButton({
+      container: '#kakaotalk-sharing-btn',
+      objectType: 'feed',
+      content: {
+        title: '오늘도 재밌게 즐겨봐요:)',
+        //description: '아메리카노, 빵, 케익',
+        imageUrl: 'https://dlwldk.github.io/pngtree-vector-working-team-icon-png-image_705755.jpg',
+        link: {
+          mobileWebUrl: 'https://dlwldk.github.io',
+          webUrl: 'https://dlwldk.github.io',
+        },
+      },
+      itemContent: {
+        //profileText: 'Kakao',
+        //profileImageUrl: 'https://dlwldk.github.io/IMG_2145.jpg',
+        titleImageUrl: 'https://dlwldk.github.io/IMG_2145.jpg',
+        titleImageText: dateString + ' 팀입니다!',
+        titleImageCategory: '보드득',
+        items: itemArr,
+        sum: '총',
+        sumOp: selNum + '명',
+      },
+      social: {
+        likeCount: 10000000,
+        commentCount: 22,
+        sharedCount: 9999,
+      },
+      buttons: [
+        {
+          title: '팀 짜보기',
+          link: {
+            mobileWebUrl: 'https://dlwldk.github.io',
+            webUrl: 'https://dlwldk.github.io',
+          },
+        }
+      ],
+    });
   });
 
-  //init 체크
-  if (!Kakao.isInitialized()) {
-    Kakao.init('980864287166a35289ec3df9c04e4089');
-    console.log("카카오 연동 성공");
-    
-  }
+  console.log("selNum22:" + selNum);
+  
 
   // Kakao.Share.createCustomButton({
   //   container: '#kakaotalk-sharing-btn',
@@ -155,45 +199,8 @@
   //     description: '설명 영역입니다.',
   //   }
   // });
-
-  Kakao.Share.createDefaultButton({
-  container: '#kakaotalk-sharing-btn',
-  objectType: 'feed',
-  content: {
-    title: '오늘도 재밌게 즐겨봐요:)',
-    //description: '아메리카노, 빵, 케익',
-    imageUrl:
-      'https://dlwldk.github.io/pngtree-vector-working-team-icon-png-image_705755.jpg',
-    link: {
-      mobileWebUrl: 'https://dlwldk.github.io',
-      webUrl: 'https://dlwldk.github.io',
-    },
-  },
-  itemContent: {
-    //profileText: 'Kakao',
-    //profileImageUrl: 'https://dlwldk.github.io/IMG_2145.jpg',
-    titleImageUrl: 'https://dlwldk.github.io/IMG_2145.jpg',
-    titleImageText: dateString + ' 팀입니다!',
-    titleImageCategory: '보드득',
-    items: itemArr,
-    sum: '총',
-    sumOp: selNum + '명',
-  },
-  social: {
-    likeCount: 10000000,
-    commentCount: 22,
-    sharedCount: 9999,
-  },
-  buttons: [
-    {
-      title: '팀 짜보기',
-      link: {
-        mobileWebUrl: 'https://dlwldk.github.io',
-        webUrl: 'https://dlwldk.github.io',
-      },
-    }
-  ],
-  });
+  console.log("selNum2: " + selNum);
+  
   
   
  });
