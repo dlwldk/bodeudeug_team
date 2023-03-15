@@ -93,7 +93,7 @@
      teamNum = $(".team").val(); //팀 수
      selArr = arrShk(selArr); //팀원 섞기
      memCnt = Math.floor(selNum / teamNum); //팀원 수
-    
+     
      //팀 리스트 생성
      for (var i = 0; i < teamNum; i++) {
        var itemObj = new Object();
@@ -113,7 +113,7 @@
          $(".rslt").find("li").eq(i).find(".contact").append("<span class='pl'>" + selArr[i] + "</span>");
        }
      }
-     
+     console.log("selNum:" + selNum);
      //리스트 애니메이션
      $(".rslt").find("li").each(function() {
        count = 0;
@@ -186,7 +186,7 @@
   },
   buttons: [
     {
-      title: '웹으로 이동',
+      title: '팀 짜보기',
       link: {
         mobileWebUrl: 'https://dlwldk.github.io',
         webUrl: 'https://dlwldk.github.io',
