@@ -1,0 +1,135 @@
+HTML CSSResult Skip Results Iframe
+EDIT ON
+
+body {
+  background: #e0e5ec;
+  margin-top: 30px;
+}
+h1 {
+  position: relative;
+  margin-top: 100px;
+  text-align: center;
+  color: #353535;
+  font-size: 50px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  text-align: center;
+  font-size: 25px;
+  color: #676767;
+}
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+button {
+  margin: 20px;
+  outline: none;
+}
+.custom-btn {
+  width: 170px;
+  height: 50px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+.custom-btn2 {
+    width: 150px;
+    height: 50px;
+    padding: 10px 25px;
+    border: 2px solid #000;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+  }
+
+.btn-16:active {
+  top: 2px;
+}
+
+.btn-16 {
+  color: #000;
+  background: #fff;
+  z-index: 1;
+}
+
+.sel {
+    color: #fff;
+    background: #000;
+    z-index: 1;
+}
+
+.rslt-zone {
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+}
+
+input {
+    font-size: 28px;
+    color: #222222;
+    width: 100px;
+    border: none;
+    border-bottom: solid #aaaaaa 1px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    position: relative;
+    background: none;
+    z-index: 5;
+    text-align: center;
+    margin-left: 70px;
+}
+  
+  input::placeholder { color: #aaaaaa; }
+  input:focus { outline: none; }
+  
+  span {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+    background-color: #666;
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    transition: 0.5s;
+  }
+  
+  label {
+    position: absolute;
+    color: #aaa;
+    left: 10px;
+    font-size: 20px;
+    bottom: 8px;
+    transition: all .2s;
+  }
+  
+  input:focus ~ label, input:valid ~ label {
+    font-size: 16px;
+    bottom: 40px;
+    color: #666;
+    font-weight: bold;
+  }
+  
+  input:focus ~ span, input:valid ~ span {
+    width: 100%;
+  }
+
+Resources1× 0.5× 0.25×Rerun
