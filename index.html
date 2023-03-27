@@ -124,7 +124,72 @@
             console.log("카카오 연동 성공");
         }
 
-        Kakao.Share.createDefaultButton({
+        // Kakao.Share.createDefaultButton({
+        //     container: '#kakaotalk-sharing-btn',
+        //     objectType: 'feed',
+        //     content: {
+        //         title: '오늘도 재밌게 즐겨봐요:)',
+        //         //description: '아메리카노, 빵, 케익'
+        //         imageUrl: 'https://dlwldk.github.io/bodeudeug_team/IMG_2316.JPG',
+        //         link: {
+        //             mobileWebUrl: 'https://dlwldk.github.io/bodeudeug_team',
+        //             webUrl: 'https://dlwldk.github.io/bodeudeug_team',
+        //         },
+        //     },
+        //     itemContent: {
+        //         //profileText: 'Kakao',
+        //         //profileImageUrl: 'https://dlwldk.github.io/IMG_2145.jpg',
+        //         titleImageUrl: 'https://dlwldk.github.io/bodeudeug_team/IMG_2145.jpg',
+        //         titleImageText: dateString + ' 팀입니다!',
+        //         titleImageCategory: '보드득',
+        //         items: itemArr,
+        //         sum: '총',
+        //         sumOp: selNum + '명',
+        //     },
+        //     social: {
+        //         likeCount: 10000000,
+        //         commentCount: 22,
+        //         sharedCount: 9999,
+        //     },
+        //     buttons: [
+        //         {
+        //             title: '팀 짜기',
+        //             link: {
+        //                 mobileWebUrl: 'https://dlwldk.github.io/bodeudeug_team',
+        //                 webUrl: 'https://dlwldk.github.io/bodeudeug_team'
+        //             },
+        //         },
+        //         {
+        //             title: '보드게임 보기',
+        //             link: {
+        //             mobileWebUrl: 'https://dlwldk.github.io/bodeudeug_boards',
+        //             webUrl: 'https://dlwldk.github.io/bodeudeug_boards'
+        //             },
+        //         }
+        //     ],
+        // });
+
+        sendShare(itemArr);
+    });
+
+    
+
+ });
+
+
+ //배열 섞기
+ function arrShk(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var idx = Math.floor(Math.random() * (i + 1));
+      var mem = arr[i];
+      arr[i] = arr[idx];
+      arr[idx] = mem;
+    }
+    return arr;
+ }
+
+ function sendShare(itemArr) {
+    Kakao.Share.createDefaultButton({
             container: '#kakaotalk-sharing-btn',
             objectType: 'feed',
             content: {
@@ -168,23 +233,5 @@
                 }
             ],
         });
-
-        
-    });
-
-    
-
- });
-
-
- //배열 섞기
- function arrShk(arr) {
-    for (var i = arr.length - 1; i > 0; i--) {
-      var idx = Math.floor(Math.random() * (i + 1));
-      var mem = arr[i];
-      arr[i] = arr[idx];
-      arr[idx] = mem;
-    }
-    return arr;
-  }
+ }
 </script>
