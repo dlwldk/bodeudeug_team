@@ -79,6 +79,7 @@ button {
 .rslt-zone {
     position: relative;
     text-align: center;
+    height: 100px;
     margin-top: 30px;
 }
 
