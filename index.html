@@ -5,7 +5,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
 </header>
 
-<h1>팀 원(TOTAL 23명)</h1>
+<h1 id="total">팀 원(TOTAL 23명)</h1>
 <p>선택된 팀 원 수: <em id="count"></em>명</p>
 <div class="frame">
   <button class="custom-btn btn-16">킹민주</button>
@@ -72,6 +72,7 @@
     $(".frame .custom-btn").addClass("sel");
     selNum = $('.sel').length;
     $("#count").text(selNum);
+    $("#total").text("팀 원(TOTAL " + $(".frame > button").length + "명)");
     
     $(".custom-btn").click(function() {
         $(this).toggleClass("sel");
